@@ -41,6 +41,10 @@ namespace WebApi
             services.AddControllers();
             services.AddSwaggerGen();
 
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<BlogEngineContext>(options =>
+                options.UseSqlServer(connectionString));
+
             services.AddDbContext<BlogEngineContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -81,7 +85,7 @@ namespace WebApi
                 options.DefaultPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
-            });
+            });            
 
 
         }

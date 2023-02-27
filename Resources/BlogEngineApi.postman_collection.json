@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "ad0eec38-f3d8-4870-843c-90c59e1a381e",
+		"name": "BlogEngineApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"prueba\",\r\n  \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "GetCommentById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Comment/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Comment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Este es el primer comentario\",\r\n    \"creationDate\": \"2023-02-27T13:18:47.160Z\",\r\n    \"userAuthorId\": 4,\r\n    \"postId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Comment",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateComment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"description\": \"Comentario actualizado X2\",\r\n    \"creationDate\": \"2023-02-27T13:18:47.160Z\",\r\n    \"userAuthorId\": 4,\r\n    \"postId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Comment",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Comment/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Comment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "GetReviewById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Review/2?autho",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Review",
+								"2"
+							],
+							"query": [
+								{
+									"key": "autho",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateReview",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"Primer Review\",\r\n    \"creationDate\": \"2023-02-27T13:43:44.742Z\",\r\n    \"initialStatusId\": 3,\r\n    \"finalStatusId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Review",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Review"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "GetPostByStatus",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post/GetPostsByStatus?id=3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post",
+								"GetPostsByStatus"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostByUserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post/GetPostsByStatus?id=3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post",
+								"GetPostsByStatus"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostsEditedByUserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post/GetPostsEditedByUserId?id=3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post",
+								"GetPostsEditedByUserId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPosts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tittle\": \"La Creación del Universo\",\r\n    \"content\": \"Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo \",\r\n    \"userAuthorId\": 4,\r\n    \"creationDate\": \"2023-02-24T17:30:30.274\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePost",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"tittle\": \"Postman post updated\",\r\n    \"content\": \"RRR OK OK Contenido Post Contenido Post Contenido Post Contenido Post Contenido Post Contenido Post Contenido Post\",\r\n    \"statusPostId\": 3,\r\n    \"userAuthorId\": 2,\r\n    \"creationDate\": \"2023-02-24T17:30:30.274\",\r\n    \"statusPost\": null,\r\n    \"userAuthor\": null,\r\n    \"reviews\": null,\r\n    \"editPostUsers\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePost",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Post/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"identification\": \"12346\",\r\n  \"name\": \"Usuario prueba postman\",\r\n  \"username\": \"prueba\",\r\n  \"password\": \"1234\",\r\n  \"roleId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/User/CreateUser",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"User",
+								"CreateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44307/api/User/GetByUsername?username=alexcc",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"User",
+								"GetByUsername"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "alexcc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

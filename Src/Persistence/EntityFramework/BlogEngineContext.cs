@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,10 @@ namespace Persistence.EntityFramework
 {
     public class BlogEngineContext : DbContext
     {
+        public BlogEngineContext(DbContextOptions<BlogEngineContext> options) : base(options)
+        {
+        }
+
         public DbSet<Comment> Comments { get; set; }
         public DbSet<EditPostUser> EditPostUsers { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -16,10 +21,6 @@ namespace Persistence.EntityFramework
         public DbSet<StatusPost> StatusPosts { get; set; }
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=ALEXC\\SQLEXPRESS;Initial Catalog=BlogEngine;Integrated Security=True");
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

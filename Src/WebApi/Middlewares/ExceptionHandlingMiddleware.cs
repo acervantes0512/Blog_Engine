@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Authentication;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WebApi.Models;
@@ -51,6 +52,10 @@ namespace WebApi.Middlewares
                     break;
                 case KeyNotFoundException ex:
                     response.StatusCode = (int)HttpStatusCode.NotFound;
+                    errorResponse.Message = ex.Message;
+                    break;
+                case AuthenticationException ex:
+                    response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     errorResponse.Message = ex.Message;
                     break;
                 default:
