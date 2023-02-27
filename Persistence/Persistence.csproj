@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EntityFramework\Migrations\20230223230621_InitialMigration.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223230621_InitialMigration.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231142_InitialMigration.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231142_InitialMigration.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231502_InitialMigration.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231502_InitialMigration.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231740_InitialMigration.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223231740_InitialMigration.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223233817_InitialMigration.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230223233817_InitialMigration.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230224203102_prueba.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230224203102_prueba.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230226191942_updateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230226191942_updateUser.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227124800_UpdateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227124800_UpdateUser.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227130352_UpdateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227130352_UpdateUser.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>
