@@ -19,3 +19,6 @@ In the repository, in the path Resources/Manual de Ejecución.pdf, you can find 
 In the path Resources/BlogEngineApi.postman_collection.json, you can find the collection that can be imported into Postman to perform tests.
 
 The estimated time for test execution is 35 minutes.
+
+# Relational Model Database
+![Logo de GitHub](/Resources/ERBlogEngine.png)
