@@ -14,6 +14,7 @@ namespace Persistence.UnitOfWork
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
         private readonly IStatusPostRepository _statusPostRepository;
+        private readonly ICommentRepository _commentRepository;
 
         public UnitOfWork(BlogEngineContext context)
         {
@@ -21,11 +22,13 @@ namespace Persistence.UnitOfWork
             _postRepository = new PostRepository(_context);
             _userRepository = new UserRepository(_context);
             _statusPostRepository = new StatusPostRepository(_context);
+            _commentRepository = new CommentRepository(_context);
         }
 
         public IPostRepository PostRepository => _postRepository;
         public IUserRepository UserRepository => _userRepository;
         public IStatusPostRepository StatusPostRepository => _statusPostRepository;
+        public ICommentRepository CommentRepository => _commentRepository;
 
         public IRepository<T> GetRepository<T>() where T : class
         {

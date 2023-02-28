@@ -10,6 +10,8 @@ namespace Persistence.UnitOfWork
         IPostRepository PostRepository { get; }
         IUserRepository UserRepository { get; }
         IStatusPostRepository StatusPostRepository { get; }
+        ICommentRepository CommentRepository { get; }
+        
         IRepository<T> GetRepository<T>() where T : class;
         void SaveChanges();
     }

@@ -61,6 +61,7 @@ namespace WebApi.Middlewares
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     errorResponse.Message = "Internal Server errors";
+                    errorResponse.TechnicalError = exception.Message;
                     break;
             }
             var result = JsonSerializer.Serialize(errorResponse);

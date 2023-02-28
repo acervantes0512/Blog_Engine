@@ -16,10 +16,12 @@ namespace WebApi.Controllers
     public class CommentController : ControllerBase
     {
         private readonly IGenericService<Comment> _genericService;
+        private readonly ICommentService _commentService;
 
-        public CommentController(IGenericService<Comment> genericService)
+        public CommentController(IGenericService<Comment> genericService, ICommentService commentService)
         {
             this._genericService = genericService;
+            this._commentService = commentService;
         }
 
         [HttpGet("{id}")]
@@ -63,6 +65,21 @@ namespace WebApi.Controllers
             }
             Comment createdEntity = await _genericService.CreateAsync(entity);
             return Ok(createdEntity);
+        }
+
+        [HttpGet]
+        [Route("GetByPostId")]
+        [Authorize(Roles = nameof(Constants.UserRoles.Editor) + "," + nameof(Constants.UserRoles.Writer)+ "," + nameof(Constants.UserRoles.Public))]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetByPostId(int id)
+        {
+            IEnumerable<Comment> rta = await _commentService.getCommentsByPost(id);
+
+            if (rta == null)
+            {
+                return NotFound();
+            }
+
+            return rta.ToList();
         }
 
     }
