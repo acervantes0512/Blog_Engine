@@ -27,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"prueba\",\r\n  \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n  \"username\": \"writer\",\r\n  \"password\": \"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,6 +83,39 @@
 					"response": []
 				},
 				{
+					"name": "GetByPostId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/Comment/GetByPostId?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Comment",
+								"GetByPostId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CreateComment",
 					"request": {
 						"method": "POST",
@@ -95,7 +128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"Este es el primer comentario\",\r\n    \"creationDate\": \"2023-02-27T13:18:47.160Z\",\r\n    \"userAuthorId\": 4,\r\n    \"postId\": 1\r\n}",
+							"raw": "{\r\n    \"description\": \"Este es el primer comentario\",\r\n    \"creationDate\": \"2023-02-27T13:18:47.160Z\",\r\n    \"userAuthorId\": 3,\r\n    \"postId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -368,7 +401,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:44307/api/Post/2",
+							"raw": "https://localhost:44307/api/Post/1",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -377,7 +410,7 @@
 							"path": [
 								"api",
 								"Post",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -422,7 +455,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tittle\": \"La Creación del Universo\",\r\n    \"content\": \"Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo \",\r\n    \"userAuthorId\": 4,\r\n    \"creationDate\": \"2023-02-24T17:30:30.274\"\r\n}",
+							"raw": "{\r\n    \"tittle\": \"La Creación del Universo\",\r\n    \"content\": \"Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo Contenido de la creación del universo \",\r\n    \"userAuthorId\": 3,\r\n    \"creationDate\": \"2023-02-24T17:30:30.274\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -518,7 +551,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"identification\": \"12346\",\r\n  \"name\": \"Usuario prueba postman\",\r\n  \"username\": \"prueba\",\r\n  \"password\": \"1234\",\r\n  \"roleId\": 3\r\n}",
+							"raw": "{\r\n  \"identification\": \"12346\",\r\n  \"name\": \"writer\",\r\n  \"username\": \"writer\",\r\n  \"password\": \"123\",\r\n  \"roleId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -545,7 +578,13 @@
 					"name": "GetByUsername",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://localhost:44307/api/User/GetByUsername?username=alexcc",
 							"protocol": "https",
