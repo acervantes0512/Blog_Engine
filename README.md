@@ -15,7 +15,7 @@ The solution was implemented following good practices and a clean architecture. 
 - Data persistence was done in a SQL Server database.
 
 # API Execution Manual
-In the repository, in the path Manuales/ManualDeEjecución.Docx, you can find the execution manual with the step-by-step instructions for execution.
-In the path Postman/Collection.Json, you can find the collection that can be imported into Postman to perform tests.
+In the repository, in the path Resources/Manual de Ejecución.pdf, you can find the execution manual with the step-by-step instructions for execution.
+In the path Resources/BlogEngineApi.postman_collection.json, you can find the collection that can be imported into Postman to perform tests.
 
 The estimated time for test execution is 35 minutes.
